@@ -17,5 +17,7 @@ interface ExtensionsInterface {
     const JSON = ".json";
     const YML = ".yml";
     
+    public function ext($file);
+    
 }
 

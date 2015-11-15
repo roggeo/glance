@@ -9,7 +9,7 @@ class Extensions implements ExtensionsInterface {
 
     
     /**
-     * 
+     * Check whether extensions are valid to themes
      * @param string $file
      * @retun bool
      */
