@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @copyright (c) 2015, Glance
+ * @package Glance
+ * @author Geovani <geovanirog@gmail.com>
+ * @license http://opensource.org/licenses/MIT
+ */
+
 namespace Glance;
 
 class Glance {
@@ -38,31 +45,45 @@ class Glance {
             return $css;
         
         foreach($css as $value)
-            print '<link rel="stylesheet" type="text/css" href="'.$value.'"'.PHP_EOL.PHP;
+            print '<link rel="stylesheet" type="text/css" href="'.$value.'"/>'.PHP_EOL;
         
     }
 
     /**
      * Include all files .js
-     * @void
+     * @return mixed
      */
-    public function js() {
+    public function js($file = false) {
+        
+        $js = $this->enqueueFiles($file, $this->container->getJS(), 'js');
+        
+        if(is_string($js))
+            return $js;
+        
+        foreach($js as $value)
+            print '<script type="text/javascript" src="'.$value.'"></script>'.PHP_EOL;
         
     }
 
     /**
      * Include files of images
-     * @void
+     * @return mixed
      */
-    public function img() {
+    public function img($file) {
+        
+        $img = $this->enqueueFiles($file, $this->container->getIMG());
+        return $img;
         
     }
 
     /**
      * 
-     * @void
+     * @return mixed
      */
-    public function enqueue() {
+    public function enqueue($file) {
+        
+        $stack = $this->enqueueFiles($file, $this->container->themeActivated());
+        return $stack;
         
     }
 

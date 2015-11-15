@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @copyright (c) 2015, Glance
+ * @package Glance
+ * @author Geovani <geovanirog@gmail.com>
+ * @license http://opensource.org/licenses/MIT
+ */
+
 namespace Glance;
 use Glance\Exception\RuntimeException as ErrorRuntime;
 
@@ -110,5 +117,44 @@ DOC;
         return $this->activated;        
     }
     
+    
+    public function hasTreeTheme() {
+        
+        $folders = array(
+                    $this->getCSS(),
+                    $this->getJS(),
+                    $this->getIMG(),
+                );
+        
+        $files = array(
+                    $this->getThemeConfig(),
+                    $this->getFileExample(),
+                    $this->getScreenshot(),
+                );
+        
+        
+        foreach($folders as $val) {
+            
+            if(!is_dir($val))
+                $this->error ("Folder ".$val, $this->themeActivated());
+            
+        }
+        
+        
+        $parser = new Parser();
+        foreach($files as $val) {
+            
+            if(!$parser->file()->exists($val))
+                    $this->error("File ".$val, $this->themeActivated());
+            
+        }
+        
+    }
+    
+    private function error($value, $theme) {
+        
+        throw new ErrorRuntime("\"{$value}\" of theme: \"{$theme}\", not exists.");
+        
+    }
     
 }

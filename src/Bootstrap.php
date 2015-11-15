@@ -1,29 +1,21 @@
 <?php
 
+/**
+ * @copyright (c) 2015, Glance
+ * @package Glance
+ * @author Geovani <geovanirog@gmail.com>
+ * @license http://opensource.org/licenses/MIT
+ */
+
 namespace Glance;
-use Glance\Exception\RuntimeException as ErrorRuntime;
 
 class Bootstrap {
     
-    public $themes;    
-    
     public function __construct(Container $container) {
-               
-        $this->treeTheme($container->themeActivated());
+        
+        $container->hasTreeTheme();
         
     }
-    
-    /**
-     * Files and folder required of one theme
-     * 
-     * @return array
-     */
-    public function treeTheme() {
-        
-                        
-        
-    }
-    
     
 }
 

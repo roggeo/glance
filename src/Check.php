@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @copyright (c) 2015, Glance
+ * @package Glance
+ * @author Geovani <geovanirog@gmail.com>
+ * @license http://opensource.org/licenses/MIT
+ */
+
 namespace Glance;
 use Glance\Exception\InvalidArgumentException as Error;
 
@@ -20,7 +27,7 @@ class Check{
      * @param string $extension
      * @return string or array of files
      */
-    public static function file($file, $folder, $extension) {
+    public static function file($file, $folder, $extension=null) {
 
         if (!is_dir($folder)) {
             throw new Error("Directory \"$folder\" not found.");
