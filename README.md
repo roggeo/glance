@@ -15,6 +15,12 @@ Create a file.json with the following content:
         "symfony/yaml": "~2.1|~3.0",
         "symfony/filesystem": "~2.1|~3.0"
     }
+
+    "autoload": {
+        "psr-4": {
+            "Glance\\": "vendor/roggeo/glance/src"
+        }
+    }
 }
 ```
 
