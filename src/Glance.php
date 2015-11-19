@@ -69,9 +69,9 @@ class Glance {
      * Include files of images
      * @return mixed
      */
-    public function img($file) {
+    public function img($file, $ext=null) {
         
-        $img = $this->enqueueFiles($file, $this->container->getIMG());
+        $img = $this->enqueueFiles($file, $this->container->getIMG(), $ext);
         return $img;
         
     }
@@ -82,7 +82,10 @@ class Glance {
      */
     public function enqueue($file) {
         
-        $stack = $this->enqueueFiles($file, $this->container->themeActivated());
+        $stack = $this->enqueueFiles($file,
+                    $this->container->getMainFolder().'/'.
+                    $this->container->themeActivated());
+        
         return $stack;
         
     }
@@ -94,7 +97,7 @@ class Glance {
      * @param mixed $extension of file or array with several extensions
      */
     public function enqueueFiles($file, $folder, $extension = null) {
- 
+        
         $enqueue = Check::file($file, $folder, $extension);
 
         return $enqueue;

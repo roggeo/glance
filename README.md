@@ -42,6 +42,7 @@ $theme = new Glance();
 
 //images
 $theme->img("name-image", "png");
+$theme->img(array("image-1","image-2"), "png");
 $theme->img("name-image.jpg");
 
 
@@ -70,12 +71,9 @@ Create a index.php at the root of your project with the following content:
 
 ```php
 <?php
-
 include "vendor/autoload.php";
 use Glance\Glance;
-
 $theme = new Glance();
-
 ?>
 <!DOCTYPE html>
 <!--
@@ -90,6 +88,16 @@ Theme default of Glance
     </head>
     <body>
         <div>Theme Light default Glance</div>
+        <?=$theme->enqueue('img/light.jpg')?>
+        <br />
+        <?=$theme->img('light.jpg')?>
+        <br />
+        <?php
+        foreach($theme->img(array("books1","books2"), "png") as $book):            
+            echo "$book<br/>";            
+        endforeach;        
+        ?>
+        <?=$theme->js('light')?>
     </body>
 </html>
 
