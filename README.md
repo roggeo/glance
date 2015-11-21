@@ -65,7 +65,7 @@ $theme->enqueue('image.png');
 
 //Call files of another Theme
 $theme->css('side','dark');
-$theme->js('home', 'dark);
+$theme->js('home', 'dark');
 $theme->img('book','png','dark');
 $theme->enqueue('img/book.png','dark');
 
