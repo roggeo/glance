@@ -63,21 +63,20 @@ class Container implements ContainerInterface{
     
     public function loadThemes($folder) {
         
-        $parser = new Parser();
-        
-        if(!is_dir($folder)) {            
-            $parser->file()->mkdir($folder, $mode = 0777);
+        if(!is_dir($folder)) {
+            throw new ErrorRuntime("Folder \"$folder\", not exists. It's important to save Themes.");
         }
+        
+        $parser = new Parser();
         
         if(!$parser->file()
                   ->exists($folder."/".$this->getMainConfig())) {
             
             echo <<<DOC
             No found $folder/{$this->getMainConfig()}
-            <pre>
             Please, create one file of
             configuration to themes, something as config.yml:
-            
+            <pre>
             themes:
                 "light": true
                 "dark":
@@ -93,7 +92,7 @@ DOC;
         foreach ($themes['themes'] as $theme => $value) {
             
             if(!is_dir($folder."/".$theme)) {
-                throw new ErrorRuntime("Folder of the THEME: \"$theme\", not exists");
+                throw new ErrorRuntime("Folder of the THEME: \"$theme\", not exists.");
             }                 
             else {
                 
@@ -113,10 +112,13 @@ DOC;
     }
     
     
-    public function themeActivated() {
+    public function getThemeActivated() {
         return $this->activated;        
     }
     
+    public function setThemeActivated($theme) {
+        $this->activated = $theme;
+    }
     
     public function hasTreeTheme() {
         
@@ -136,7 +138,7 @@ DOC;
         foreach($folders as $val) {
             
             if(!is_dir($val))
-                $this->error ("Folder ".$val, $this->themeActivated());
+                $this->error ("Folder ".$val, $this->activated);
             
         }
         
@@ -145,7 +147,7 @@ DOC;
         foreach($files as $val) {
             
             if(!$parser->file()->exists($val))
-                    $this->error("File ".$val, $this->themeActivated());
+                    $this->error("File ".$val, $this->activated);
             
         }
         

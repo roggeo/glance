@@ -13,6 +13,7 @@ class Glance {
 
     private $config;
     private $container;
+    private $origin;
     
     /**
      * 
@@ -35,9 +36,12 @@ class Glance {
     /**
      * Include all files .css
      * @param mixed $file name file css or array('file1','file2')
-     * @return mixed
+     * @param string $theme Name some theme
+     * @return string
      */
-    public function css($file = false) {
+    public function css($file = false, $theme=null) {
+
+        $this->secondaryTheme($theme);
         
         $css = $this->enqueueFiles($file, $this->container->getCSS(), 'css');
         
@@ -51,9 +55,13 @@ class Glance {
 
     /**
      * Include all files .js
-     * @return mixed
+     * @param mixed $file name file javascript or array('file1','file2')
+     * @param string $theme Name some theme
+     * @return string
      */
-    public function js($file = false) {
+    public function js($file = false, $theme=null) {
+        
+        $this->secondaryTheme($theme);
         
         $js = $this->enqueueFiles($file, $this->container->getJS(), 'js');
         
@@ -67,9 +75,14 @@ class Glance {
 
     /**
      * Include files of images
-     * @return mixed
+     * @param mixed $file name file img or array('file1','file2')
+     * @param string $ext Extension of image
+     * @param string $theme Name some theme
+     * @return string|array
      */
-    public function img($file, $ext=null) {
+    public function img($file, $ext=null, $theme=null) {
+        
+        $this->secondaryTheme($theme);
         
         $img = $this->enqueueFiles($file, $this->container->getIMG(), $ext);
         return $img;
@@ -77,14 +90,18 @@ class Glance {
     }
 
     /**
-     * 
-     * @return mixed
+     * Include any file
+     * @param mixed $file Name file with extension or array('file1.css','file2.png')
+     * @param string $theme Name some theme
+     * @return string|array
      */
-    public function enqueue($file) {
+    public function enqueue($file, $theme=null) {
+        
+        $this->secondaryTheme($theme);
         
         $stack = $this->enqueueFiles($file,
                     $this->container->getMainFolder().'/'.
-                    $this->container->themeActivated());
+                    $this->container->getThemeActivated());
         
         return $stack;
         
@@ -95,13 +112,53 @@ class Glance {
      * @param mixed $file name file or array of names of files
      * @param string $folder of files
      * @param mixed $extension of file or array with several extensions
+     * @return string|array
      */
     public function enqueueFiles($file, $folder, $extension = null) {
+        
+        $this->destroySecondaryTheme();
         
         $enqueue = Check::file($file, $folder, $extension);
 
         return $enqueue;
 
+    }
+    
+    /**
+     * Configuration of theme secondary
+     * @param string $theme Name of theme
+     * @void
+     */
+    public function secondaryTheme($theme=null) {
+        
+        if($theme) {
+            $this->origin = $this->container->getThemeActivated();
+            $this->container->setThemeActivated($theme);
+        }
+        
+    }
+    
+    /**
+     * Destroy theme secondary
+     * @void
+     */
+    public function destroySecondaryTheme() {
+        
+        if($this->origin)
+            $this->container->setThemeActivated($this->origin);
+        
+        $this->origin = null;
+        
+    }
+    
+    /**
+     * 
+     * @return theme activated
+     */
+    public function getTheme() {
+        
+        return $this->container->getThemeActivated();
+        
     }
 
 }

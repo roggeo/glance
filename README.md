@@ -62,6 +62,13 @@ $theme->js();
 //All
 $theme->enqueue('image.png');
 
+
+//Call files of another Theme
+$theme->css('side','dark');
+$theme->js('home', 'dark);
+$theme->img('book','png','dark');
+$theme->enqueue('img/book.png','dark');
+
 ```
 
 In your web page
@@ -72,8 +79,13 @@ Create a index.php at the root of your project with the following content:
 ```php
 <?php
 include "vendor/autoload.php";
-use Glance\Glance;
-$theme = new Glance();
+
+use Glance\Glance,
+    Glance\Config;
+
+$conf = new Config();
+$conf->setFolder('public/theme');
+$theme = new Glance($conf);
 ?>
 <!DOCTYPE html>
 <!--
@@ -84,7 +96,6 @@ Theme default of Glance
         <title>Theme Light</title>
         <meta charset="UTF-8">
 	<?php $theme->css();?>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>Theme Light default Glance</div>
