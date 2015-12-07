@@ -1,19 +1,19 @@
 #Glance
 
-###Manager themes for APPs in PHP
+###Gerenciador de temas para APPs em PHP
 
-##Why to use?
+##Por que usar?
 
-The idea is that with one manager themes, you are freer
-to separate styles for your web application without worrying about change
-in the URIs within your template file. It needs to change only
-configuration file ```config.yml´´´.
+A ideia é que com o um gerenciador de temas, você tenha mais liberdade
+para separar estilos para sua aplicação web sem se preocupar com alteração
+no em URIs dentro do seu arquivo de template. Será necessário alterar apenas
+do arquivo de configuração ```config.yml´´´.
 
-For get file of the style, to use only: ```$theme->css("custon.css");´´´;
+Para chamar um arquivo de estilo use apenas: ```$theme->css("custon.css");´´´;
 
-##Install
+##Instalação
 
-Create a file composer.json with the following content:
+Crie uma arquivo com o nome composer.json:
     
 ```json 
 {
@@ -31,7 +31,7 @@ Create a file composer.json with the following content:
 }
 ```
 
-Or you can to use commands of the Composer:
+Ou você pode usar comandos do composer:
 
     $ mkdir your_project
     $ chmod -R 777 your_project
@@ -40,7 +40,7 @@ Or you can to use commands of the Composer:
 
 
 
-##Methods
+##Métodos que você pode usar:
 
 ```php
 
@@ -77,9 +77,9 @@ $theme->enqueue('img/book.png','dark');
 
 ```
 
-##In your web page
+##Na sua página web:
 
-Create a index.php at the root of your project with the following content:
+Crie um arquivo index.php na raiz do seu projeto:
 
 ```php
 <?php
@@ -116,7 +116,7 @@ $theme = new Glance($conf);
 
 ```
 
-##Contributing to Glance
+##Contribua com o Glance
 
 - [Contribuing](CONTRIBUTING.md)
 - [License](LICENSE.md)
