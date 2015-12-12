@@ -4,6 +4,10 @@
 
 ##Why to use?
 
+
+[Readme in Portuguese](README_pt_BR.md)
+
+
 The idea is that with one manager themes, you are freer
 to separate styles for your web application without worrying about change
 in the URIs within your template file. It needs to change only
