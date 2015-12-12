@@ -5,11 +5,11 @@
 ##Por que usar?
 
 A ideia é que com o um gerenciador de temas, você tenha mais liberdade
-para separar estilos para sua aplicação web sem se preocupar com alteração
-no em URIs dentro do seu arquivo de template. Será necessário alterar apenas
-do arquivo de configuração ```config.yml´´´.
+para separar estilos na sua aplicação web sem se preocupar com alteração
+em URIs dentro do seu arquivo de template. Será necessário alterar apenas
+do arquivo de configuração config.yml.
 
-Para chamar um arquivo de estilo use apenas: ```$theme->css("custon.css");´´´;
+Para chamar um arquivo de estilo use apenas: $theme->css("custon.css");
 
 ##Instalação
 

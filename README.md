@@ -11,9 +11,9 @@
 The idea is that with one manager themes, you are freer
 to separate styles for your web application without worrying about change
 in the URIs within your template file. It needs to change only
-configuration file ```config.yml´´´.
+configuration file "config.yml".
 
-For get file of the style, to use only: ```$theme->css("custon.css");´´´;
+For get file of the style, to use only: "$theme->css("custom.css");";
 
 ##Install
 
