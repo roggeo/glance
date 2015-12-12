@@ -1,0 +1,3 @@
+#Name of the themes, if enabled tell true
+themes:
+    "light": true

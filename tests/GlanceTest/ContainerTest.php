@@ -7,15 +7,13 @@
  * @license http://opensource.org/licenses/MIT
  */
 
-namespace Glance;
+namespace GlanceTest;
 
-class Bootstrap {
+use Glance\ContainerInterface;
+use Glance\Container;
+use Glance\Config;
+
+class ContainerTest implements ContainerInterface{
     
-    public function __construct(Container $container) {
-        
-        $container->hasTreeTheme();
-        
-    }
-    
+
 }
-

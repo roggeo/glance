@@ -7,15 +7,14 @@
  * @license http://opensource.org/licenses/MIT
  */
 
-namespace Glance;
+namespace GlanceTest;
 
-class Bootstrap {
-    
-    public function __construct(Container $container) {
-        
-        $container->hasTreeTheme();
+use Glance\ExtensionsInterface;
+
+class ExtensionsTest implements ExtensionsInterface {
+ 
+    public function ext($file){
         
     }
     
 }
-

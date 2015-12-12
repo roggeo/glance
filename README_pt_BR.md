@@ -22,6 +22,9 @@ Crie uma arquivo com o nome composer.json:
         "symfony/yaml": "~2.1|~3.0",
         "symfony/filesystem": "~2.1|~3.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
     "autoload": {
         "psr-4": {
             "Glance\\": "vendor/roggeo/glance/src"
@@ -116,7 +119,21 @@ $theme = new Glance($conf);
 
 ```
 
-##Contribua com o Glance
+##Tests
+Use PHPUnit depois de seguir as recomendações acima com Composer:
+
+[Mais detalhes PHPUnit](https://phpunit.de)
+
+```bash
+    $ cd you_project/vendor/roggeo/glance
+    $ phpunit
+```
+
+
+##Contribuindo
 
 - [Contribuing](CONTRIBUTING.md)
+
+
+##Licensa
 - [License](LICENSE.md)

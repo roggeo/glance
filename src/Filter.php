@@ -3,7 +3,7 @@
 /**
  * @copyright (c) 2015, Glance
  * @package Glance
- * @author Geovani <geovanirog@gmail.com>
+ * @author Geovani <https://github.com/roggeo>
  * @license http://opensource.org/licenses/MIT
  */
 

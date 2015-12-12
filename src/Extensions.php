@@ -3,7 +3,7 @@
 /**
  * @copyright (c) 2015, Glance
  * @package Glance
- * @author Geovani <geovanirog@gmail.com>
+ * @author Geovani <https://github.com/roggeo>
  * @license http://opensource.org/licenses/MIT
  */
 
@@ -44,6 +44,9 @@ class Extensions implements ExtensionsInterface {
             case self::JPG:
                 return true;
             
+            case self::JPEG:
+                return true;
+                
             case self::PNG:
 		 return true;
                 
@@ -56,6 +59,9 @@ class Extensions implements ExtensionsInterface {
 		return true;
                 
             case self::CSS:                
+		return true;
+             
+            case self::JS:                
 		return true;
                 
             case self::HTML:

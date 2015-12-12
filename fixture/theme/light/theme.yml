@@ -1,0 +1,10 @@
+## YAML Template.
+---
+theme  : Litht
+author : Geovani
+email  : geovanirog@gmail.com
+date   : 2015-11-08
+license: http://opensource.org/licenses/MIT
+link   : https://github.com/roggeo/light
+description: >
+    Theme default for Glance
