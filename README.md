@@ -4,13 +4,12 @@
 
 ##Why to use?
 
-
-[Readme in Portuguese](README_pt_BR.md)
+[Leia-me em Português](README_pt_BR.md)
 
 
 The idea is that with one manager themes, you are freer
 to separate styles for your web application without worrying about change
-in the URIs within your template file. It needs to change only
+in the URIs with in your template file. It needs to change only
 configuration file "config.yml".
 
 For get file of the style, to use only: "$theme->css("custom.css");";
@@ -45,6 +44,33 @@ Or you can to use commands of the Composer:
     $ php -r "readfile('https://getcomposer.org/installer');" | php
     $ php composer.phar update
 
+
+##Creating files of configurations
+
+###public/config.yml
+Main file to write names of themes and tags to project:
+
+```yml
+themes:
+    "sometheme1":
+    "sometheme2":
+    "sometheme3": true
+    "sometheme4":
+``` 
+
+###public/sometheme3/theme.yml
+Information of a specific theme:
+
+```yml
+theme  : Litht
+author : Geovani
+email  : name@email.com
+date   : 2015-11-08
+license: http://opensource.org/licenses/MIT
+link   : https://yoursite.com
+description: >
+    Theme default for Glance
+```
 
 
 ##Methods
@@ -135,6 +161,9 @@ For tests use PHPUnit after to use the recommendations above with Composer:
 
 
 ##Contributing
+
+If case of your interest, you can help improve this project.
+See how:
 
 - [Contribuing](CONTRIBUTING.md)
 

@@ -3,7 +3,11 @@
          backupStaticAttributes="false"
          bootstrap="../../../vendor/autoload.php"
          strict="true"
-         verbose="true">
+         verbose="true"
+         colors="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true">
  <testsuites>
   <testsuite name="GlanceTest">
    <directory>tests</directory>

@@ -9,7 +9,7 @@ para separar estilos na sua aplicação web sem se preocupar com alteração
 em URIs dentro do seu arquivo de template. Será necessário alterar apenas
 do arquivo de configuração config.yml.
 
-Para chamar um arquivo de estilo use apenas: $theme->css("custon.css");
+Para chamar um arquivo de estilo use apenas: $theme->css("custom.css");
 
 ##Instalação
 
@@ -42,8 +42,35 @@ Ou você pode usar comandos do composer:
     $ php composer.phar update
 
 
+##Creating files of configurations
 
-##Métodos que você pode usar:
+###public/config.yml
+Main file to write names of themes and tags to project:
+
+```yml
+themes:
+    "sometheme1":
+    "sometheme2":
+    "sometheme3": true
+    "sometheme4":
+``` 
+
+###public/sometheme3/theme.yml
+Information of a specific theme:
+
+```yml
+theme  : Litht
+author : Geovani
+email  : name@email.com
+date   : 2015-11-08
+license: http://opensource.org/licenses/MIT
+link   : https://yoursite.com
+description: >
+    Theme default for Glance
+```
+
+
+##Métodos que você pode usar
 
 ```php
 
@@ -80,7 +107,7 @@ $theme->enqueue('img/book.png','dark');
 
 ```
 
-##Na sua página web:
+##Na sua página web
 
 Crie um arquivo index.php na raiz do seu projeto:
 
@@ -131,6 +158,9 @@ Use PHPUnit depois de seguir as recomendações acima com Composer:
 
 
 ##Contribuindo
+
+Se caso te interessar, você pode ajudar a melhorar este projeto.
+Veja como:
 
 - [Contribuing](CONTRIBUTING.md)
 
