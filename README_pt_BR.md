@@ -42,10 +42,10 @@ Ou você pode usar comandos do composer:
     $ php composer.phar update
 
 
-##Creating files of configurations
+##Criando arquivos de configuração
 
 ###public/config.yml
-Main file to write names of themes and tags to project:
+Principal arquivo para informar nomes de temas e tags do projeto:
 
 ```yml
 themes:
@@ -56,7 +56,7 @@ themes:
 ``` 
 
 ###public/sometheme3/theme.yml
-Information of a specific theme:
+Informações que deve ter em um tema específico:
 
 ```yml
 theme  : Litht
