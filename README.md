@@ -1,5 +1,7 @@
 #Glance
 
+[![Latest Stable Version](https://poser.pugx.org/roggeo/glance/v/stable)](https://packagist.org/packages/roggeo/glance) [![Total Downloads](https://poser.pugx.org/roggeo/glance/downloads)](https://packagist.org/packages/roggeo/glance) [![Latest Unstable Version](https://poser.pugx.org/roggeo/glance/v/unstable)](https://packagist.org/packages/roggeo/glance) [![License](https://poser.pugx.org/roggeo/glance/license)](https://packagist.org/packages/roggeo/glance)
+
 ###Manager themes for APPs in PHP
 
 ##Why to use?
