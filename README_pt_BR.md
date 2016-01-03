@@ -1,7 +1,5 @@
 #Glance
 
-[![Latest Stable Version](https://poser.pugx.org/roggeo/glance/v/stable)](https://packagist.org/packages/roggeo/glance) [![Total Downloads](https://poser.pugx.org/roggeo/glance/downloads)](https://packagist.org/packages/roggeo/glance) [![Latest Unstable Version](https://poser.pugx.org/roggeo/glance/v/unstable)](https://packagist.org/packages/roggeo/glance) [![License](https://poser.pugx.org/roggeo/glance/license)](https://packagist.org/packages/roggeo/glance)
-
 ###Gerenciador de temas para APPs em PHP
 
 ##Por que usar?
@@ -12,6 +10,10 @@ em URIs dentro do seu arquivo de template. Será necessário alterar apenas
 do arquivo de configuração config.yml.
 
 Para chamar um arquivo de estilo use apenas: $theme->css("custom.css");
+
+##Status
+
+[![Latest Stable Version](https://poser.pugx.org/roggeo/glance/v/stable)](https://packagist.org/packages/roggeo/glance) [![Total Downloads](https://poser.pugx.org/roggeo/glance/downloads)](https://packagist.org/packages/roggeo/glance) [![Latest Unstable Version](https://poser.pugx.org/roggeo/glance/v/unstable)](https://packagist.org/packages/roggeo/glance) [![License](https://poser.pugx.org/roggeo/glance/license)](https://packagist.org/packages/roggeo/glance)
 
 ##Instalação
 
