@@ -1,0 +1,26 @@
+
+
+Code Coverage Report:      
+  2016-01-03 05:41:23      
+                           
+ Summary:                  
+  Classes: 36.36% (4/11)   
+  Methods: 57.14% (24/42)  
+  Lines:   63.37% (128/202)
+
+\Glance::Bootstrap
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  2/  2)
+\Glance::Check
+  Methods:   0.00% ( 0/ 2)   Lines:  25.81% (  8/ 31)
+\Glance::Config
+  Methods:  66.67% ( 6/ 9)   Lines:  64.71% ( 11/ 17)
+\Glance::Container
+  Methods:  78.57% (11/14)   Lines:  85.19% ( 46/ 54)
+\Glance::Extensions
+  Methods:  50.00% ( 1/ 2)   Lines:  61.29% ( 19/ 31)
+\Glance::Filter
+  Methods:   0.00% ( 0/ 2)   Lines:  55.00% ( 11/ 20)
+\Glance::Glance
+  Methods:  33.33% ( 3/ 9)   Lines:  72.50% ( 29/ 40)
+\Glance::Parser
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)

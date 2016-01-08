@@ -41,12 +41,17 @@ Create a file composer.json with the following content:
 }
 ```
 
-Or you can to use commands of the Composer:
+Command line:
 
     $ mkdir your_project
     $ chmod -R 777 your_project
     $ php -r "readfile('https://getcomposer.org/installer');" | php
     $ php composer.phar update
+
+
+Or simply (if you have installed Composer):
+
+    $ composer require roggeo/glance
 
 
 ##Creating files of configurations
@@ -63,6 +68,7 @@ themes:
 ``` 
 
 ###public/sometheme3/theme.yml
+
 Information of a specific theme:
 
 ```yml
@@ -75,6 +81,10 @@ link   : https://yoursite.com
 description: >
     Theme default for Glance
 ```
+
+The structure should be as follows:
+
+[![Glance Explorer](fixture/explorer.png)]
 
 
 ##Methods

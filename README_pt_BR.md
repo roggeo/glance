@@ -38,7 +38,7 @@ Crie uma arquivo com o nome composer.json:
 }
 ```
 
-Ou você pode usar comandos do composer:
+Linha de comando:
 
     $ mkdir your_project
     $ chmod -R 777 your_project
@@ -46,9 +46,15 @@ Ou você pode usar comandos do composer:
     $ php composer.phar update
 
 
+Ou simplesmente (caso tenha Composer instalado):
+
+    $ composer require roggeo/glance
+
+
 ##Criando arquivos de configuração
 
 ###public/config.yml
+
 Principal arquivo para informar nomes de temas e tags do projeto:
 
 ```yml
@@ -60,6 +66,7 @@ themes:
 ``` 
 
 ###public/sometheme3/theme.yml
+
 Informações que deve ter em um tema específico:
 
 ```yml
@@ -73,6 +80,11 @@ description: >
     Theme default for Glance
 ```
 
+A estrutura deverá ser como a seguinte:
+
+[![Glance Explorer](fixture/explorer.png)]
+
+[![Glance Explorer](fixture/explorer.png)]
 
 ##Métodos que você pode usar
 
