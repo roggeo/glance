@@ -84,8 +84,6 @@ A estrutura deverá ser como a seguinte:
 
 [![Glance Explorer](fixture/explorer.png)]
 
-[![Glance Explorer](fixture/explorer.png)]
-
 ##Métodos que você pode usar
 
 ```php
