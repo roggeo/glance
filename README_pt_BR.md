@@ -11,6 +11,9 @@ do arquivo de configuração config.yml.
 
 Para chamar um arquivo de estilo use apenas: $theme->css("custom.css");
 
+[Ver exemplos](#examples)
+
+
 ##Status
 
 [![Latest Stable Version](https://poser.pugx.org/roggeo/glance/v/stable)](https://packagist.org/packages/roggeo/glance) [![Total Downloads](https://poser.pugx.org/roggeo/glance/downloads)](https://packagist.org/packages/roggeo/glance) [![Latest Unstable Version](https://poser.pugx.org/roggeo/glance/v/unstable)](https://packagist.org/packages/roggeo/glance) [![License](https://poser.pugx.org/roggeo/glance/license)](https://packagist.org/packages/roggeo/glance)
@@ -38,7 +41,7 @@ Crie uma arquivo com o nome composer.json:
 }
 ```
 
-Linha de comando:
+Linha de Comando:
 
     $ mkdir your_project
     $ chmod -R 777 your_project
@@ -48,12 +51,12 @@ Linha de comando:
 
 Ou simplesmente (caso tenha Composer instalado):
 
-    $ composer require roggeo/glance
+    $ composer require roggeo/glance:dev-master
 
 
 ##Criando arquivos de configuração
 
-###public/config.yml
+* public/config.yml
 
 Principal arquivo para informar nomes de temas e tags do projeto:
 
@@ -65,7 +68,7 @@ themes:
     "sometheme4":
 ``` 
 
-###public/sometheme3/theme.yml
+* public/sometheme3/theme.yml
 
 Informações que deve ter em um tema específico:
 
@@ -82,7 +85,15 @@ description: >
 
 A estrutura deverá ser como a seguinte:
 
-[![Glance Explorer](fixture/explorer.png)]
+[![Glance Explorer](docs/img/explorer.png)](#)
+
+
+##Exemplos
+
+[Theme](https://github.com/roggeo/light), como criar um.
+
+[Demo](https://github.com/roggeo/demo-glance), como usar.
+
 
 ##Métodos que você pode usar
 
