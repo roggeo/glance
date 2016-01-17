@@ -17,6 +17,7 @@ interface ExtensionsInterface {
     const SVG = ".svg";
     const BMP = ".bmp";
     const GIF = ".gif";
+    const ICO = ".ico";
     
     const CSS = ".css";
     const JS = ".js";

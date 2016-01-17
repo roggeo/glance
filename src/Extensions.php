@@ -58,6 +58,9 @@ class Extensions implements ExtensionsInterface {
             case self::GIF:
 		return true;
                 
+            case self::ICO:
+		return true;
+                
             case self::CSS:                
 		return true;
              
@@ -78,7 +81,7 @@ class Extensions implements ExtensionsInterface {
                 
             case self::YML:
 		return true;
-                
+                   
             default :
                 return false;
         }        
