@@ -90,6 +90,17 @@ class Glance {
     }
 
     /**
+     * Include files of folder assets
+     * @param mixed $file
+     * @param string $theme
+     */
+    public function assets($file, $theme=null) {
+        
+       
+        
+    }
+    
+    /**
      * Include any file
      * @param mixed $file Name file with extension or array('file1.css','file2.png')
      * @param string $theme Name some theme
