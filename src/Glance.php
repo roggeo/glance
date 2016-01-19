@@ -92,12 +92,17 @@ class Glance {
     /**
      * Include files of folder assets
      * @param mixed $file
+     * @param string $lib
      * @param string $theme
      */
-    public function assets($file, $theme=null) {
+    public function assets($file, $lib=null, $theme=null) {
+
+        $this->secondaryTheme($theme);
         
-       
-        
+        return  $this->enqueueFiles($file,
+                    $this->container->getFolderAssets($lib)
+                );
+
     }
     
     /**

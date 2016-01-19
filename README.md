@@ -133,6 +133,9 @@ $theme->js('home', 'dark');
 $theme->img('book','png','dark');
 $theme->enqueue('img/book.png','dark');
 
+//New
+$theme->assets('style.css','bootstrap');
+
 ```
 
 ##In your web page

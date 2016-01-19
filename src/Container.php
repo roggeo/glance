@@ -46,8 +46,24 @@ class Container implements ContainerInterface{
                 "/".$this->activated."/".$this->config->getFolderJS();
     }
 
+    public function getFolderAssets($folder=null){
+        
+        if( !$folder )
+            return $this->getMainFolder().
+               "/".$this->activated."/".self::folder_assets;
+        
+        $url_folder = $this->getMainFolder()."/".$this->activated."/".self::folder_assets."/".$folder;
+        
+        if( !is_dir($url_folder) ) {
+            throw new ErrorRuntime("Library \"$folder\", in \"ASSETS\" not exists.");
+        }
+        
+        return $url_folder;
+       
+    }
+    
     public function getFileExample(){
-       return $this->getMainFolder().
+        return $this->getMainFolder().
                "/".$this->activated."/".self::file_example;
     }
     
