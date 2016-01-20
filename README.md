@@ -159,12 +159,20 @@ $theme = new Glance($conf);
         <title>Theme Light</title>
         <meta charset="UTF-8">
 	<?php $theme->css();?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>Theme Light default Glance</div>
         <?=$theme->enqueue('img/light.jpg')?>
         <br />
+        <br />
         <?=$theme->img('light.jpg')?>
+        <br />
+        Or
+        <br />
+        <?=$theme->img('light')?>
+        <br />
+        <br />
         <br />
         <?php
         foreach($theme->img(array("books1","books2"), "png") as $book):            
@@ -172,6 +180,28 @@ $theme = new Glance($conf);
         endforeach;        
         ?>
         <?=$theme->js('light')?>
+        
+        <div>
+            <p>Other theme</p>
+            <ul>
+                <li><?=$theme->css('side','dark')?></li>
+                <li><?=$theme->js('home')?></li>
+                <li><?=$theme->img('book','png','dark')?></li>
+                <li><?=$theme->enqueue('img/book.png','dark')?></li>
+            </ul>
+            <?php
+            foreach ($theme->enqueue(array('img/book.png'), 'dark') as $book):
+                echo "$book<br/>";
+            endforeach;
+            ?>
+            
+        </div>
+        <div>
+            <?php echo $theme->img('books1')?>
+            <br/>
+            <?php echo $theme->assets('style.css','bootstrap')?>
+        </div>
+        
     </body>
 </html>
 

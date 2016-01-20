@@ -85,6 +85,7 @@ class Glance {
         $this->secondaryTheme($theme);
         
         $img = $this->enqueueFiles($file, $this->container->getIMG(), $ext);
+        
         return $img;
         
     }
