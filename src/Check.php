@@ -82,6 +82,14 @@ class Check{
         
     }
     
+    /**
+     * If no exists extension in file,
+     * find file with the your extension
+     * 
+     * @param string $file
+     * @param string $folder
+     * @return bool|string With address url of the file
+     */
     public static function fileNoExtension($file, $folder) {
         
         if( is_array($file) )
@@ -113,7 +121,11 @@ class Check{
         
     }
     
-    
+    /**
+     * 
+     * @param string $folder
+     * @return array Files of the folder defined on variable $folder
+     */
     public static function fileAll($folder) {
         
         $open_folder = glob("$folder/*");
@@ -127,8 +139,8 @@ class Check{
                unset($open_folder[$key]);
 
         }
-
-        return $open_folder;
+        
+        return ($open_folder);
         
     }
     
