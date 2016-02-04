@@ -10,7 +10,7 @@
 namespace Glance;
 use Glance\Exception\RuntimeException as ErrorRuntime;
 
-class Container implements ContainerInterface{
+class Container implements ContainerInterface {
 
     private $activated;
     private $config;
@@ -32,29 +32,31 @@ class Container implements ContainerInterface{
     }
     
     public function getCSS(){
-        return $this->getMainFolder().
-                "/".$this->activated."/".$this->config->getFolderCSS();
+        return Filter::systemPath(
+                    $this->getMainFolder()."/".$this->activated."/".$this->config->getFolderCSS() );
     }
     
     public function getIMG(){
-        return $this->getMainFolder().
-                "/".$this->activated."/".$this->config->getFolderIMG();
+        return Filter::systemPath(
+                    $this->getMainFolder()."/".$this->activated."/".$this->config->getFolderIMG() );
     }
     
     public function getJS(){
-        return $this->getMainFolder().
-                "/".$this->activated."/".$this->config->getFolderJS();
+        return  Filter::systemPath(
+                    $this->getMainFolder()."/".$this->activated."/".$this->config->getFolderJS() );
     }
 
     public function getFolderAssets($folder=null){
         
         if( !$folder )
-            return $this->getMainFolder().
-               "/".$this->activated."/".self::folder_assets;
+            return Filter::systemPath(
+                    $this->getMainFolder()."/".$this->activated."/".self::folder_assets );
         
         $url_folder = $this->getMainFolder()."/".$this->activated."/".self::folder_assets."/".$folder;
         
-        if( !is_dir($url_folder) ) {
+        $parser = new Parser();
+        
+        if( !$parser->file()->exists($url_folder) ) {
             throw new ErrorRuntime("Library \"$folder\", in \"ASSETS\" not exists.");
         }
         
@@ -63,33 +65,42 @@ class Container implements ContainerInterface{
     }
     
     public function getFileExample(){
-        return $this->getMainFolder().
-               "/".$this->activated."/".self::file_example;
+        return Filter::systemPath(
+                    $this->getMainFolder(). "/".$this->activated."/".self::file_example );
     }
     
     public function getScreenshot() {
-        return $this->getMainFolder().
-                "/".$this->activated."/".self::screenshot;
+        return Filter::systemPath(
+                    $this->getMainFolder()."/".$this->activated."/".self::screenshot );
     }
     
     public function getThemeConfig() {
-        return $this->getMainFolder().
-                "/".$this->activated."/".self::theme_config;
+        return Filter::systemPath(
+                    $this->getMainFolder()."/".$this->activated."/".self::theme_config );
+    }
+    
+    public function getFolderTmp() {
+        
+        return self::theme_folder_tmp;
+        
     }
     
     public function loadThemes($folder) {
         
-        if(!is_dir($folder)) {
+        $folder = Filter::realPath($folder);
+        
+        if( !$folder ) {
             throw new ErrorRuntime("Folder \"$folder\", not exists. It's important to save Themes.");
         }
         
         $parser = new Parser();
+        $DS = DIRECTORY_SEPARATOR;
         
-        if(!$parser->file()
-                  ->exists($folder."/".$this->getMainConfig())) {
+        if( !$parser->file()
+                  ->exists( Filter::systemPath( $folder . "/" . $this->getMainConfig() )) ) {
             
             echo <<<DOC
-            No found $folder/{$this->getMainConfig()}
+            No found $folder{$DS}{$this->getMainConfig()}
             Please, create one file of
             configuration to themes, something as config.yml:
             <pre>
@@ -102,12 +113,12 @@ DOC;
             exit;
         }
         
-        $themes = $parser->loadYAML($folder."/".$this->getMainConfig());
+        $themes = $parser->loadYAML( Filter::systemPath( $folder . "/" . $this->getMainConfig() ) );
         $ftheme = NULL;
         
         foreach ($themes['themes'] as $theme => $value) {
             
-            if(!is_dir($folder."/".$theme)) {
+            if(!$parser->file()->exists( Filter::systemPath( $folder . "/" . $theme)) ) {
                 throw new ErrorRuntime("Folder of the THEME: \"$theme\", not exists.");
             }                 
             else {
@@ -151,15 +162,16 @@ DOC;
                 );
         
         
+        $parser = new Parser();
+        
         foreach($folders as $val) {
             
-            if(!is_dir($val))
+            if(!$parser->file()->exists($val))
                 $this->error ("Folder ".$val, $this->activated);
             
         }
         
         
-        $parser = new Parser();
         foreach($files as $val) {
             
             if(!$parser->file()->exists($val))
@@ -168,6 +180,7 @@ DOC;
         }
         
     }
+
     
     private function error($value, $theme) {
         

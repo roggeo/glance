@@ -25,31 +25,39 @@ class Check{
      * @param mixed $file
      * @param string $folder
      * @param string $extension Opcional
+     * @param string $folder_theme Path to folder themes
      * @return string or array of files
      */
     public static function file($file, $folder, $extension=null) {
 
-        if (!is_dir($folder))
+        $parser = new Parser();
+        
+        $folder = Filter::systemPath($folder);
+        $file   = Filter::systemPath($file);
+        
+        if ( !$parser->file()->exists($folder) )
             throw new Error("Directory \"$folder\" not found.");
         
-        if (!$file && $folder)
+        if ( !$file && $folder)
             return self::fileAll($folder);
         
         $no_extension = false;
         
-        if(!$extension)
+        if( !$extension)
             $no_extension = self::fileNoExtension($file, $folder);
-
+        
         if( $no_extension )
             return $no_extension;
             
+        
         $parser = new Parser();
         
         Filter::file($file, $extension);
+        
 
         if (is_string($file)) {
             
-            $namefill = "{$folder}/{$file}";
+            $namefill = $folder . DIRECTORY_SEPARATOR . $file;
             
             if(!$parser->file()->exists($namefill)) {
                 throw new Error("File \"$namefill\" not found.");
@@ -66,7 +74,7 @@ class Check{
         $i = 0;
         foreach($file as $val) {
             
-            $namefill = "{$folder}/{$val}";
+            $namefill = $folder . DIRECTORY_SEPARATOR . $val;
             
             if(!$parser->file()->exists($namefill))
                 throw new Error("File \"$namefill\" not found.");
@@ -105,7 +113,7 @@ class Check{
         
         foreach($files as $v){
             
-            $exp        = explode('/', $v);
+            $exp        = explode( DIRECTORY_SEPARATOR, $v );
             $file_sch   = explode('.',end($exp));
             $ky         = count($file_sch) -1;
             $file_ext   = $file_sch[$ky];
@@ -113,7 +121,7 @@ class Check{
             unset($file_sch[$ky]);
             
             if(implode('.', $file_sch) == $file)
-                return $folder.'/'.$file.'.'.$file_ext;
+                return $folder . DIRECTORY_SEPARATOR . $file.'.'.$file_ext;
             
         }
         
@@ -128,13 +136,15 @@ class Check{
      */
     public static function fileAll($folder) {
         
-        $open_folder = glob("$folder/*");
+        $DS = DIRECTORY_SEPARATOR;
+        
+        $open_folder = glob("$folder{$DS}*");
             
         $exts = new Extensions();
 
         foreach($open_folder as $key => $val) {
-
-            $exp = explode("/", $val);
+            
+            $exp = explode( $DS , $val);
             if(!$exts->check(end($exp)))
                unset($open_folder[$key]);
 

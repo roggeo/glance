@@ -15,6 +15,7 @@ class Config implements ContainerInterface{
     private $folder_css;
     private $folder_img;
     private $folder_js;
+    private $folder_tmp;
 
     public function __construct() {
         
@@ -22,6 +23,7 @@ class Config implements ContainerInterface{
         $this->folder_css   = self::folder_css;
         $this->folder_img   = self::folder_img;
         $this->folder_js    = self::folder_js;
+        $this->folder_tmp   = self::theme_folder_tmp;
         
     }
     
@@ -43,7 +45,7 @@ class Config implements ContainerInterface{
     }
 
     /**
-     * Name name folder of files css
+     * Name folder of files css
      * @param string $folder
      */
     public function setFolderCSS($folder) {
@@ -59,7 +61,7 @@ class Config implements ContainerInterface{
     }
 
     /**
-     * Name name folder of files images
+     * Name folder of files images
      * @param string $folder
      */
     public function setFolderIMG($folder) {
@@ -75,7 +77,7 @@ class Config implements ContainerInterface{
     }
 
     /**
-     * Name name folder of files javascript
+     * Name folder of files javascript
      * @param string $folder
      */
     public function setFolderJS($folder) {
@@ -89,5 +91,21 @@ class Config implements ContainerInterface{
     public function getFolderJS() {
         return $this->folder_js;
     }
+    
+    /**
+     * Name folder of link tmp
+     * @param string $folder
+     */
+    public function setFolderTmp($folder) {
+        $this->folder_tmp = $folder;
+    }
+        
+    /**
+     * 
+     * @return string
+     */
+    public function getFolderTmp() {
+        return $this->folder_tmp;
+    }    
 
 }

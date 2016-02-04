@@ -46,6 +46,51 @@ class Filter {
         
     }
     
+    
+    /**
+     * 
+     * @param string $path
+     * @return string|bool
+     */
+    public static function realPath($path) {
+        
+        return realpath($path);
+        
+    }
+
+    
+    /**
+     * 
+     * @param string $path
+     * @param mixed $salt Create salt automatically, defined or false
+     * @return string
+     */
+    public static function httpPathTmp($path, $salt=true) {
+        
+        if($salt === true)
+            return str_replace('\\','/', $path) . "?" . sha1(uniqid());
+        
+        elseif( is_string($salt) )
+            return str_replace('\\','/', $path) . "?" . $salt;
+        
+        else
+            return str_replace('\\','/', $path);
+        
+    }
+    
+    
+    /**
+     * 
+     * @param string $path
+     * @return string
+     */
+    public static function systemPath($path) {
+        
+        return str_replace(array("\\","/"), array(DIRECTORY_SEPARATOR, DIRECTORY_SEPARATOR), $path);
+        
+    }
+
+
     protected function hasError($file, $is_ext, $ext) {
         
         if(!$is_ext and !$ext)

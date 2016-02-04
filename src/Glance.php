@@ -5,15 +5,23 @@
  * @package Glance
  * @author Geovani <https://github.com/roggeo>
  * @license http://opensource.org/licenses/MIT
+ * 
+ * @method mixed css(mixed $file = false, string $theme=null)
+ * @method mixed js(mixed $file = false, string $theme=null)
+ * @method mixed img(mixed $file, string $ext=null, string $theme=null)
+ * @method mixed assets(mixed $file, string $lib=null, string $theme=null)
+ * @method mixed enqueue(mixed $file, string $theme=null)
+ * @method string getTheme() Name of theme actived
+ * @method string themeRepository() Repository of themes
+ * 
  */
 
 namespace Glance;
 
 class Glance {
 
-    private $config;
-    private $container;
-    private $origin;
+    private $config;    
+    private $theme;
     
     /**
      * 
@@ -21,161 +29,83 @@ class Glance {
      */
     public function __construct($config = false) {
 
+        
         if ($config and $config instanceof Config)
             $this->config = $config;
 
         else
             $this->config = new Config();
-        
-        $this->container = new Container($this->config);
-        
-        (new Bootstrap($this->container));
-        
-    }
 
-    /**
-     * Include all files .css
-     * @param mixed $file name file css or array('file1','file2')
-     * @param string $theme Name some theme
-     * @return string
-     */
-    public function css($file = false, $theme=null) {
-
-        $this->secondaryTheme($theme);
-        
-        $css = $this->enqueueFiles($file, $this->container->getCSS(), 'css');
-        
-        if(is_string($css))
-            return $css;
-        
-        foreach($css as $value)
-            print '<link rel="stylesheet" type="text/css" href="'.$value.'"/>'.PHP_EOL;
-        
-    }
-
-    /**
-     * Include all files .js
-     * @param mixed $file name file javascript or array('file1','file2')
-     * @param string $theme Name some theme
-     * @return string
-     */
-    public function js($file = false, $theme=null) {
-        
-        $this->secondaryTheme($theme);
-        
-        $js = $this->enqueueFiles($file, $this->container->getJS(), 'js');
-        
-        if(is_string($js))
-            return $js;
-        
-        foreach($js as $value)
-            print '<script type="text/javascript" src="'.$value.'"></script>'.PHP_EOL;
-        
-    }
-
-    /**
-     * Include files of images
-     * @param mixed $file name file img or array('file1','file2')
-     * @param string $ext Extension of image
-     * @param string $theme Name some theme
-     * @return string|array
-     */
-    public function img($file, $ext=null, $theme=null) {
-        
-        $this->secondaryTheme($theme);
-        
-        $img = $this->enqueueFiles($file, $this->container->getIMG(), $ext);
-        
-        return $img;
-        
-    }
-
-    /**
-     * Include files of folder assets
-     * @param mixed $file
-     * @param string $lib
-     * @param string $theme
-     */
-    public function assets($file, $lib=null, $theme=null) {
-
-        $this->secondaryTheme($theme);
-        
-        return  $this->enqueueFiles($file,
-                    $this->container->getFolderAssets($lib)
-                );
+        $this->theme = new Theme( $this->config );
 
     }
     
+    
     /**
-     * Include any file
-     * @param mixed $file Name file with extension or array('file1.css','file2.png')
-     * @param string $theme Name some theme
-     * @return string|array
+     * @param string $method Method name to Glance\Theme
+     * @param array  $args
+     * @return mixed Result of function Glance\Theme
      */
-    public function enqueue($file, $theme=null) {
+    public function __call($method, $args) {
         
-        $this->secondaryTheme($theme);
         
-        $stack = $this->enqueueFiles($file,
-                    $this->container->getMainFolder().'/'.
-                    $this->container->getThemeActivated());
+        $first = isset($args[0])? $args[0]: null;
+        $two   = isset($args[1])? $args[1]: null;
+        $three = isset($args[2])? $args[2]: null;
         
-        return $stack;
+        $call = $this->theme->$method($first, $two, $three);
         
-    }
+        return $this->buildPathTmp($call);
 
+    }
+    
     /**
      * 
-     * @param mixed $file name file or array of names of files
-     * @param string $folder of files
-     * @param mixed $extension of file or array with several extensions
-     * @return string|array
+     * @param type $url
+     * @return type
      */
-    public function enqueueFiles($file, $folder, $extension = null) {
+    public function buildPathTmp ($url) {
         
-        $this->destroySecondaryTheme();
         
-        $enqueue = Check::file($file, $folder, $extension);
-
-        return $enqueue;
-
-    }
-    
-    /**
-     * Configuration of theme secondary
-     * @param string $theme Name of theme
-     * @void
-     */
-    public function secondaryTheme($theme=null) {
-        
-        if($theme) {
-            $this->origin = $this->container->getThemeActivated();
-            $this->container->setThemeActivated($theme);
+        if( is_string($url) ) {
+            
+            $url = $this->buildFolderTmp($url);
+            
+            return Filter::httpPathTmp($url);
+            
         }
         
-    }
-    
-    /**
-     * Destroy theme secondary
-     * @void
-     */
-    public function destroySecondaryTheme() {
+        if( is_array($url) ) { 
+            
+            foreach($url as $k => $v) {
+                
+                $v = $this->buildFolderTmp($v);
+                
+                $url[$k] = Filter::httpPathTmp($v);
+                
+            }
+            
+        }
         
-        if($this->origin)
-            $this->container->setThemeActivated($this->origin);
-        
-        $this->origin = null;
-        
+        return $url;
+
     }
     
     /**
      * 
-     * @return theme activated
      */
-    public function getTheme() {
+    public function buildFolderTmp ( $path ) {
         
-        return $this->container->getThemeActivated();
         
+        $repository     = $this->theme->themeRepository();
+        $repository_tmp = $this->theme->getFolderTmp();
+        
+        
+        //if ( strpos( $path, $repository) === 0 )
+        
+        
+        return str_replace($repository, $repository_tmp, $path);
+                
     }
 
 }
