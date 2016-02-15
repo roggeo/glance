@@ -10,7 +10,7 @@
 namespace Glance;
 use Glance\Exception\InvalidArgumentException as Error;
 
-class Check{
+class Check {
 
     private $config;
 

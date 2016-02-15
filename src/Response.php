@@ -9,13 +9,16 @@
 
 namespace Glance;
 
-class Bootstrap {
+
+class Response {
+
     
-    public function __construct(Container $container) {
-        
-        $container->hasTreeTheme();
-        
+    public static function listenMessage() {
+
+        $url = ( isset($_GET['get']) && is_string($_GET['get']) )? $_GET['get']: false;
+
+        Request::fileContent($url);
+
     }
     
 }
-

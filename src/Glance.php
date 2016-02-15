@@ -98,7 +98,7 @@ class Glance {
         
         
         $repository     = $this->theme->themeRepository();
-        $repository_tmp = $this->theme->getFolderTmp();
+        $repository_tmp = $this->theme->getFolderTmpTheme();
         
         
         //if ( strpos( $path, $repository) === 0 )

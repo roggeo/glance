@@ -12,7 +12,7 @@ namespace Glance;
 interface ContainerInterface {
     
     const main_folder       = "theme";
-    const main_config       = "config.yml";    
+    const main_config       = "config.yml";
     const folder_css        = "css";
     const folder_img        = "img";
     const folder_js         = "js";

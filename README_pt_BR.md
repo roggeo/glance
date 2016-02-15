@@ -144,7 +144,8 @@ use Glance\Glance,
     Glance\Config;
 
 $conf = new Config();
-$conf->setFolder('public/theme');
+$conf->setFolderTheme('themes');
+
 $theme = new Glance($conf);
 ?>
 

@@ -11,10 +11,8 @@ namespace Glance;
 
 class Theme {
     
-    
     private $container;
-    private $origin;
-    
+    private $origin;    
     
     /**
      * 
@@ -24,7 +22,8 @@ class Theme {
        
         $this->container = new Container($config);
         
-        (new Bootstrap($this->container));
+        // check tree by themes
+        $this->container->hasTreeTheme();
         
     }
     
@@ -152,9 +151,9 @@ class Theme {
      * 
      * @return type
      */
-    public function getFolderTmp() {
+    public function getFolderTmpTheme() {
         
-        return $this->container->getFolderTmp();
+        return $this->container->getFolderTmpTheme();
         
     }
     

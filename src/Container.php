@@ -17,14 +17,14 @@ class Container implements ContainerInterface {
     
     public function __construct(Config $config) {
         
-        $this->config = $config;        
-        $this->loadThemes($this->config->getFolder());
+        $this->config = $config;     
+        $this->loadThemes($this->config->getFolderTheme());
         
     }
     
     public function getMainFolder(){
         
-        return $this->config->getFolder();
+        return $this->config->getFolderTheme();
     }
     
     public function getMainConfig(){        
@@ -79,7 +79,7 @@ class Container implements ContainerInterface {
                     $this->getMainFolder()."/".$this->activated."/".self::theme_config );
     }
     
-    public function getFolderTmp() {
+    public function getFolderTmpTheme() {
         
         return self::theme_folder_tmp;
         

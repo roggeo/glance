@@ -11,37 +11,40 @@ namespace Glance;
 
 class Config implements ContainerInterface{
 
-    private $folder;
     private $folder_css;
     private $folder_img;
     private $folder_js;
-    private $folder_tmp;
+    private $theme_folder_tmp;
 
     public function __construct() {
         
-        $this->folder       = self::main_folder;
-        $this->folder_css   = self::folder_css;
-        $this->folder_img   = self::folder_img;
-        $this->folder_js    = self::folder_js;
-        $this->folder_tmp   = self::theme_folder_tmp;
+        $this->setFolderTheme(self::main_folder);
+        $this->setFolderCSS(self::folder_css);
+        $this->setFolderIMG(self::folder_img);
+        $this->setFolderJS(self::folder_js);
+        $this->setFolderTmpTheme(self::theme_folder_tmp);
         
     }
     
     
     /**
-     * Name folder of themes
+     * Repository of the themes
      * @param string $folder
      */
-    public function setFolder($folder) {
-        $this->folder = $folder;
+    public function setFolderTheme($folder) {
+    
+        Tmpfile::setThemeConfig(array('themes_folder' => $folder));
+        
     }
 
     /**
      * 
      * @return string
      */
-    public function getFolder() {
-        return $this->folder;
+    public function getFolderTheme() {
+        
+        return Tmpfile::getThemeConfig('themes_folder');
+        
     }
 
     /**
@@ -96,16 +99,16 @@ class Config implements ContainerInterface{
      * Name folder of link tmp
      * @param string $folder
      */
-    public function setFolderTmp($folder) {
-        $this->folder_tmp = $folder;
+    public function setFolderTmpTheme($folder) {
+        $this->theme_folder_tmp = $folder;
     }
         
     /**
      * 
      * @return string
      */
-    public function getFolderTmp() {
-        return $this->folder_tmp;
-    }    
-
+    public function getFolderTmpTheme() {
+        return $this->theme_folder_tmp;
+    }
+    
 }
