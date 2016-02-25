@@ -18,14 +18,16 @@ class Extensions implements ExtensionsInterface {
     /**
      * Check whether extensions are valid to themes
      * @param string $file
-     * @retun bool
+     * @param bool $ret_ext If returns extension or not.
+     * @retun bool|string
      */
-    public function check($file) {
+    public function check($file, $ret_ext = false) {
         
         $exp = explode('.', $file);
+        $ext = end($exp);
         
-        if($this->ext('.'.end($exp))) {
-            return true;
+        if( $this->ext('.'.$ext) ) {
+            return (!$ret_ext) ? true : $ext;
         }
         
         return false;
@@ -34,12 +36,12 @@ class Extensions implements ExtensionsInterface {
     
     /**
      * 
-     * @param string $file
+     * @param string $name Name of extension
      * @return bool
      */
-    public function ext($file) {
+    public function ext($name) {
         
-        switch($file) {
+        switch($name) {
             
             case self::JPG:
                 return true;
@@ -85,6 +87,64 @@ class Extensions implements ExtensionsInterface {
             default :
                 return false;
         }        
+        
+    }
+    
+    /**
+     * 
+     * @param string $name Name of extension
+     * @return string Name of Content-type
+     */
+    public function ctype($name) {
+        
+        
+        switch($name) {
+            
+            case self::JPG:
+                return "image/jpg";
+            
+            case self::JPEG:
+                return "image/jpg";
+                
+            case self::PNG:
+		return "image/png";
+                
+            case self::SVG:
+		return "image/svg+xml";
+                
+            case self::BMP:
+		return "image/bmp";
+                
+            case self::GIF:
+		return "image/gif";
+                
+            case self::ICO:
+		return "image/png";
+                
+            case self::CSS:                
+		return "text/plain";
+             
+            case self::JS:                
+		return "text/plain";
+                
+            case self::HTML:
+		return "text/html";
+                
+            case self::HTM:
+		return "text/html";
+                
+            case self::XML:
+		return "application/xhtml+xml";
+                
+            case self::JSON:
+		return "application/json";
+                
+            case self::YML:
+		return "application/xhtml+xml";
+                   
+            default :
+                return false;
+        }
         
     }
     

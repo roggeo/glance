@@ -9,8 +9,8 @@
 
 namespace Glance;
 
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Yaml\Yaml,
+    Symfony\Component\Filesystem\Filesystem;
 
 class Parser {
 

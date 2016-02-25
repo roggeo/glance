@@ -92,20 +92,29 @@ class Glance {
     }
     
     /**
+     * Generate folder to files temporary of themes
+     * 
+     * This function replace true folder (that has all themes)
+     * by one folder public, when accessed by request HTTP.
      * 
      */
     public function buildFolderTmp ( $path ) {
         
-        
+        //repository of all themes        
         $repository     = $this->theme->themeRepository();
+        
+        //repository to access files of themes (symbolically)
         $repository_tmp = $this->theme->getFolderTmpTheme();
         
+        $pos = strpos( $path, $repository );
         
-        //if ( strpos( $path, $repository) === 0 )
+        
+        if ( $pos === 0)
+            return $repository_tmp . substr($path, strlen($repository));
         
         
-        return str_replace($repository, $repository_tmp, $path);
-                
+        return $path;
+        
     }
 
 }
