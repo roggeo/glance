@@ -69,9 +69,9 @@ class Glance {
         
         if( is_string($url) ) {
             
-            $url = $this->buildFolderTmp($url);
+            $url = $this->theme->buildPublicTmp($url);
             
-            return Filter::httpPathTmp($url);
+            return Filter::httpPublicTmp($url);
             
         }
         
@@ -79,9 +79,9 @@ class Glance {
             
             foreach($url as $k => $v) {
                 
-                $v = $this->buildFolderTmp($v);
+                $v = $this->theme->buildPublicTmp($v);
                 
-                $url[$k] = Filter::httpPathTmp($v);
+                $url[$k] = Filter::httpPublicTmp($v);
                 
             }
             
@@ -91,30 +91,4 @@ class Glance {
 
     }
     
-    /**
-     * Generate folder to files temporary of themes
-     * 
-     * This function replace true folder (that has all themes)
-     * by one folder public, when accessed by request HTTP.
-     * 
-     */
-    public function buildFolderTmp ( $path ) {
-        
-        //repository of all themes        
-        $repository     = $this->theme->themeRepository();
-        
-        //repository to access files of themes (symbolically)
-        $repository_tmp = $this->theme->getFolderTmpTheme();
-        
-        $pos = strpos( $path, $repository );
-        
-        
-        if ( $pos === 0)
-            return $repository_tmp . substr($path, strlen($repository));
-        
-        
-        return $path;
-        
-    }
-
 }

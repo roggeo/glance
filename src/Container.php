@@ -87,10 +87,12 @@ class Container implements ContainerInterface {
     
     public function loadThemes($folder) {
         
+        $f_origin = $folder;
+                
         $folder = Filter::realPath($folder);
         
         if( !$folder ) {
-            throw new ErrorRuntime("Folder \"$folder\", not exists. It's important to save Themes.");
+            throw new ErrorRuntime("Folder \"$f_origin\", not exists. It's important to save Themes.");
         }
         
         $parser = new Parser();
@@ -109,6 +111,35 @@ class Container implements ContainerInterface {
                 "dark":
                 "one-style":
             
+DOC;
+            exit;
+        }
+        
+        
+        if( !$parser->file()
+                  ->exists( Filter::systemPath( $this->getFolderTmpTheme() )) ) {
+            
+            echo <<<DOC
+            <pre>
+            Please, follow steps:
+            
+                1 - Create a folder in "public/theme"
+                2 - Create a file in "public/theme/index.php", containing:
+            
+                    < ?php
+                    require_once __DIR__.'/../../vendor/autoload.php';
+                    use Glance\Response;
+                    Response::listenMessage();
+            
+                3 - Create a file in "public/theme/.htaccess", containing:
+            
+                    
+                    RewriteEngine On
+                    RewriteCond %{REQUEST_FILENAME} !-f
+                    RewriteCond %{REQUEST_FILENAME} !-d
+                    RewriteRule ^(.*)$ index.php?get=$1 [L]
+                    
+            </pre>
 DOC;
             exit;
         }

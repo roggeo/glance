@@ -43,9 +43,12 @@ class Theme {
         if(is_string($css))
             return $css;
         
-        foreach($css as $value)
-            print '<link rel="stylesheet" type="text/css" href="'.$value.'"/>'.PHP_EOL;
-        
+        foreach($css as $value){
+            
+            $value = $this->buildPublicTmp($value);            
+            print '<link rel="stylesheet" type="text/css" href="' . Filter::httpPublicTmp($value) . '"/>'.PHP_EOL;
+            
+        }
     }
 
     
@@ -64,8 +67,10 @@ class Theme {
         if(is_string($js))
             return $js;
         
-        foreach($js as $value)
-            print '<script type="text/javascript" src="'.$value.'"></script>'.PHP_EOL;
+        foreach($js as $value) {            
+            $value = $this->buildPublicTmp($value);
+            print '<script type="text/javascript" src="' . Filter::httpPublicTmp($value) . '"></script>'.PHP_EOL;
+        }
         
     }
 
@@ -204,5 +209,29 @@ class Theme {
         
     }
     
+    /**
+     * Generate folder to files temporary of themes
+     * 
+     * This function replace true folder (that has all themes)
+     * by one folder public, when accessed by request HTTP.
+     * 
+     */
+    public function buildPublicTmp ( $path ) {
+        
+        //repository of all themes        
+        $repository  = $this->themeRepository();
+        $repository  = Filter::realPath($repository);
+        
+        //repository to access files of themes (symbolically)
+        $repository_tmp = $this->getFolderTmpTheme(); 
+       
+        $pos = strpos( $path, $repository );
+        
+        if ( $pos === 0)
+            return $repository_tmp . substr($path, strlen($repository));
+
+        return $path;
+        
+    }
     
 }

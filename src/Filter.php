@@ -65,7 +65,7 @@ class Filter {
      * @param mixed $salt Create salt automatically, defined or false
      * @return string
      */
-    public static function httpPathTmp($path, $salt=true) {
+    public static function httpPublicTmp($path, $salt=true) {
         
         if($salt === true)
             return str_replace('\\','/', $path) . "?" . sha1(uniqid());

@@ -122,10 +122,10 @@ class Extensions implements ExtensionsInterface {
 		return "image/png";
                 
             case self::CSS:                
-		return "text/plain";
+		return "text/css";
              
             case self::JS:                
-		return "text/plain";
+		return "application/javascript";
                 
             case self::HTML:
 		return "text/html";

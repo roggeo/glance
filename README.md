@@ -28,18 +28,7 @@ Create a file composer.json with the following content:
 ```json 
 {
     "require": {
-        "php": ">=5.3.9",
-        "symfony/yaml": "~2.1|~3.0",
-        "symfony/filesystem": "~2.1|~3.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Glance\\": "vendor/roggeo/glance/src"
-        }
-
+        "roggeo/glance": "dev-master"
     }
 }
 ```
@@ -57,13 +46,13 @@ Or simply (if you have installed Composer):
     $ composer require roggeo/glance:dev-master
 
 
-##Creating files of configurations
+##Starting the toy. See steps
 
-* public/config.yml
 
-Main file to write names of themes and tags to project:
+* 1) Create one file **your-folder-themes/config.yml**:
 
 ```yml
+# Name of the themes, if enabled tell true
 themes:
     "sometheme1":
     "sometheme2":
@@ -71,11 +60,11 @@ themes:
     "sometheme4":
 ``` 
 
-* public/sometheme3/theme.yml
 
-Information of a specific theme:
+* 2) Create one file **your-folder-themes/your-theme/theme.yml**:
 
 ```yml
+#Information of a specific theme
 theme  : Litht
 author : Geovani
 email  : name@email.com
@@ -86,9 +75,31 @@ description: >
     Theme default for Glance
 ```
 
-The structure should be as follows:
+
+* 3) Check your **Reposytory of themes**, should be as follows:
 
 [![Glance Explorer](docs/img/explorer.png)](#)
+
+
+* 4) Create one file **public/theme/index.php**, and insert code:
+
+```php
+require_once __DIR__.'/../../vendor/autoload.php';
+use Glance\Response;
+Response::listenMessage();
+```
+
+
+* 5) Create one file **public/theme/.htaccess**, and insert code:
+
+```sh
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?get=$1 [L]
+</IfModule>
+```
 
 
 ##Examples
@@ -102,7 +113,13 @@ The structure should be as follows:
 
 ```php
 
-$theme = new Glance();
+use Glance\Glance,
+    Glance\Config;
+
+$conf = new Config();
+$conf->setFolderTheme('C:\\themes');
+
+$theme = new Glance($conf);
 
 //images
 $theme->img("name-image", "png");
@@ -150,7 +167,11 @@ use Glance\Glance,
     Glance\Config;
 
 $conf = new Config();
-$conf->setFolderTheme('themes');
+
+// Defining folder repository of all yours themes
+$conf->setFolderTheme('C:\\themes');
+
+$theme = new Glance($conf);
 
 $theme = new Glance($conf);
 ?>
