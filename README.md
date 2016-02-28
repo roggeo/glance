@@ -20,7 +20,7 @@ or all CSSs.
     $theme->css();
 
 
-[See several examples](#examples) or [See one Demo](https://github.com/roggeo/demo-glance)
+[See several examples](#methods) or [see one Demo](https://github.com/roggeo/demo-glance)
 
 
 
@@ -28,9 +28,11 @@ or all CSSs.
 
 * 1) Run the commands:
 
-    $ mkdir your_project
-    $ cd your_project
-    $ php -r "readfile('https://getcomposer.org/installer');" | php
+```bash
+$ mkdir your_project
+$ cd your_project
+$ php -r "readfile('https://getcomposer.org/installer');" | php
+```
 
 * 2) Create a file **your_project/composer.json** with the following content:
     
@@ -44,17 +46,19 @@ or all CSSs.
 
 * 3) Run the commands:
 
-    $ php composer.phar update
-
+```bash
+$ php composer.phar update
+```
 
 
 Or simply (if you have installed Composer) run the following commands
 in your application folder:
 
-    $ mkdir your_project
-    $ cd your_project
-    $ composer require roggeo/glance:dev-master
-
+```bash
+$ mkdir your_project
+$ cd your_project
+$ composer require roggeo/glance:dev-master
+```
 
 
 ##How use?
@@ -87,7 +91,9 @@ description: >
 ```
 
 
-* 3) Check your **Repository of themes**, it should be something like:
+* 3) Your repository themes should have a basic structure, such as:
+theme (folder to save all themes), light (a theme sample) and light files
+that is the basic structure of a theme for Glance. See a image:
 
 [![Glance Explorer](docs/img/explorer.png)](#)
 
@@ -113,11 +119,11 @@ RewriteRule ^(.*)$ index.php?get=$1 [L]
 ```
 
 
-##Examples
+##Instructions for themes Glance
 
-[Theme](https://github.com/roggeo/light), how to create one.
+[Theme](https://github.com/roggeo/light), see example of one.
 
-[Demo](https://github.com/roggeo/demo-glance), how to use.
+[Demo](https://github.com/roggeo/demo-glance), see how to use.
 
 
 ##Methods
