@@ -1,29 +1,38 @@
 #Glance
 
-###Manager themes for APPs in PHP
+###Themes manager for APPs in PHP
 
-##Why to use?
-
-[Leia-me em Português](README_pt_BR.md)
+##Why use?
 
 
-The idea is that with one manager themes, you are freer
-to separate styles for your web application without worrying about change
-in the URIs with in your template file. It needs to change only
-configuration file "config.yml".
+With a manager of themes you can separate your
+styles (as CSS, JS, images among others) in your
+web application, without worrying many about
+changes in the URIs in your template file
+(as .tpl, .html, .phtml among others).
 
-For get file of the style, to use only: "$theme->css("custom.css");";
+For example, to get files of style, you use only:
 
-[See examples](#examples)
+    $theme->css("custom.css");
+
+or all CSSs.
+    
+    $theme->css();
 
 
-##Status
+[See several examples](#examples) or [See one Demo](https://github.com/roggeo/demo-glance)
 
-[![Latest Stable Version](https://poser.pugx.org/roggeo/glance/v/stable)](https://packagist.org/packages/roggeo/glance) [![Total Downloads](https://poser.pugx.org/roggeo/glance/downloads)](https://packagist.org/packages/roggeo/glance) [![Latest Unstable Version](https://poser.pugx.org/roggeo/glance/v/unstable)](https://packagist.org/packages/roggeo/glance) [![License](https://poser.pugx.org/roggeo/glance/license)](https://packagist.org/packages/roggeo/glance)
+
 
 ##Install
 
-Create a file composer.json with the following content:
+* 1) Run the commands:
+
+    $ mkdir your_project
+    $ cd your_project
+    $ php -r "readfile('https://getcomposer.org/installer');" | php
+
+* 2) Create a file **your_project/composer.json** with the following content:
     
 ```json 
 {
@@ -33,23 +42,25 @@ Create a file composer.json with the following content:
 }
 ```
 
-Command Line:
+* 3) Run the commands:
 
-    $ mkdir your_project
-    $ chmod -R 777 your_project
-    $ php -r "readfile('https://getcomposer.org/installer');" | php
     $ php composer.phar update
 
 
-Or simply (if you have installed Composer):
 
+Or simply (if you have installed Composer) run the following commands
+in your application folder:
+
+    $ mkdir your_project
+    $ cd your_project
     $ composer require roggeo/glance:dev-master
 
 
-##Starting the toy. See steps
+
+##How use?
 
 
-* 1) Create one file **your-folder-themes/config.yml**:
+* 1) Create a file **your-folder-themes/config.yml**:
 
 ```yml
 # Name of the themes, if enabled tell true
@@ -61,7 +72,7 @@ themes:
 ``` 
 
 
-* 2) Create one file **your-folder-themes/your-theme/theme.yml**:
+* 2) Create a file **your-folder-themes/your-theme/theme.yml**:
 
 ```yml
 #Information of a specific theme
@@ -76,12 +87,12 @@ description: >
 ```
 
 
-* 3) Check your **Reposytory of themes**, should be as follows:
+* 3) Check your **Repository of themes**, it should be something like:
 
 [![Glance Explorer](docs/img/explorer.png)](#)
 
 
-* 4) Create one file **public/theme/index.php**, and insert code:
+* 4) Create a file **public/theme/index.php**, and insert the code:
 
 ```php
 require_once __DIR__.'/../../vendor/autoload.php';
@@ -90,7 +101,7 @@ Response::listenMessage();
 ```
 
 
-* 5) Create one file **public/theme/.htaccess**, and insert code:
+* 5) Create a file **public/theme/.htaccess**, and insert the code:
 
 ```sh
 <IfModule mod_rewrite.c>
@@ -113,13 +124,10 @@ RewriteRule ^(.*)$ index.php?get=$1 [L]
 
 ```php
 
-use Glance\Glance,
-    Glance\Config;
+...
+//code configuration
+...
 
-$conf = new Config();
-$conf->setFolderTheme('C:\\themes');
-
-$theme = new Glance($conf);
 
 //images
 $theme->img("name-image", "png");
@@ -133,15 +141,12 @@ $theme->css(array("custon", "main"));
 $theme->css(array("custon.css", "main"));
 $theme->css();
 
+
 //javascript
 $theme->js("custon.js");
 $theme->js(array("custon", "main"));
 $theme->js(array("custon.js", "main"));
 $theme->js();
-
-
-//All
-$theme->enqueue('image.png');
 
 
 //Call files of another Theme
@@ -150,8 +155,11 @@ $theme->js('home', 'dark');
 $theme->img('book','png','dark');
 $theme->enqueue('img/book.png','dark');
 
-//New
+
+//All
+$theme->enqueue('image.png');
 $theme->assets('style.css','bootstrap');
+
 
 ```
 
@@ -173,7 +181,6 @@ $conf->setFolderTheme('C:\\themes');
 
 $theme = new Glance($conf);
 
-$theme = new Glance($conf);
 ?>
 
 <html>
@@ -230,6 +237,7 @@ $theme = new Glance($conf);
 ```
 
 ##Tests
+
 For tests use PHPUnit after to use the recommendations above with Composer:
 
 [More details PHPUnit](https://phpunit.de)
