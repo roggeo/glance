@@ -92,8 +92,8 @@ description: >
 
 
 * 3) Your repository themes should have a basic structure, such as:
-theme (folder to save all themes), light (a theme sample) and light files
-that is the basic structure of a theme for Glance. See a image:
+**theme** (folder to save all themes), **light** and **dark** are theme sample.
+Files in folder **light** are the basic structure of a theme for Glance. See a image:
 
 [![Glance Explorer](docs/img/explorer.png)](#)
 
