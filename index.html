@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Glance by roggeo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Glance</h1>
+      <h2 class="project-tagline">Themes manager for APPs in PHP</h2>
+      <a href="https://github.com/roggeo/glance" class="btn">View on GitHub</a>
+      <a href="https://github.com/roggeo/glance/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/roggeo/glance/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="methods-available" class="anchor" href="#methods-available" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods available.</h3>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">...</span></span>
+<span class="pl-s1"><span class="pl-c">//code configuration</span></span>
+<span class="pl-s1"><span class="pl-k">...</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//images</span></span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">"</span>name-image<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>png<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>image-1<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>image-2<span class="pl-pds">"</span></span>), <span class="pl-s"><span class="pl-pds">"</span>png<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">"</span>name-image.jpg<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//css</span></span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css(<span class="pl-s"><span class="pl-pds">"</span>custon.css<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>custon<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>main<span class="pl-pds">"</span></span>));</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>custon.css<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>main<span class="pl-pds">"</span></span>));</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//javascript</span></span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js(<span class="pl-s"><span class="pl-pds">"</span>custon.js<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>custon<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>main<span class="pl-pds">"</span></span>));</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>custon.js<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>main<span class="pl-pds">"</span></span>));</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Call files of another Theme</span></span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css(<span class="pl-s"><span class="pl-pds">'</span>side<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js(<span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">'</span>book<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>png<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>enqueue(<span class="pl-s"><span class="pl-pds">'</span>img/book.png<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//All</span></span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>enqueue(<span class="pl-s"><span class="pl-pds">'</span>image.png<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>assets(<span class="pl-s"><span class="pl-pds">'</span>style.css<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>bootstrap<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span></pre></div>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example.</h3>
+
+<p>Create a <code>your-file.php</code> at the root of your project with the following content:</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>vendor/autoload.php<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Glance\Glance</span>,</span>
+<span class="pl-s1">    <span class="pl-c1">Glance\Config</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$conf</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Config</span>();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Defining folder repository of all yours themes</span></span>
+<span class="pl-s1"><span class="pl-smi">$conf</span><span class="pl-k">-&gt;</span>setFolderTheme(<span class="pl-s"><span class="pl-pds">'</span>C:<span class="pl-cce">\\</span>themes<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$theme</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Glance</span>(<span class="pl-smi">$conf</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+
+&lt;<span class="pl-ent">html</span>&gt;
+    &lt;<span class="pl-ent">head</span>&gt;
+        &lt;<span class="pl-ent">title</span>&gt;Theme Light&lt;/<span class="pl-ent">title</span>&gt;
+        &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>&gt;
+    <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css();</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>viewport<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>width=device-width, initial-scale=1.0<span class="pl-pds">"</span></span>&gt;
+    &lt;/<span class="pl-ent">head</span>&gt;
+    &lt;<span class="pl-ent">body</span>&gt;
+        &lt;<span class="pl-ent">div</span>&gt;Theme Light default Glance&lt;/<span class="pl-ent">div</span>&gt;
+        <span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>enqueue(<span class="pl-s"><span class="pl-pds">'</span>img/light.jpg<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        &lt;<span class="pl-ent">br</span> /&gt;
+        &lt;<span class="pl-ent">br</span> /&gt;
+        <span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">'</span>light.jpg<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        &lt;<span class="pl-ent">br</span> /&gt;
+        Or
+        &lt;<span class="pl-ent">br</span> /&gt;
+        <span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">'</span>light<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        &lt;<span class="pl-ent">br</span> /&gt;
+        &lt;<span class="pl-ent">br</span> /&gt;
+        &lt;<span class="pl-ent">br</span> /&gt;
+        <span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">        <span class="pl-k">foreach</span>(<span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>books1<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>books2<span class="pl-pds">"</span></span>), <span class="pl-s"><span class="pl-pds">"</span>png<span class="pl-pds">"</span></span>) <span class="pl-k">as</span> <span class="pl-smi">$book</span>):            </span>
+<span class="pl-s1">            <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$book</span>&lt;br/&gt;<span class="pl-pds">"</span></span>;            </span>
+<span class="pl-s1">        <span class="pl-k">endforeach</span>;        </span>
+<span class="pl-s1">        </span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        <span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js(<span class="pl-s"><span class="pl-pds">'</span>light<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+
+        &lt;<span class="pl-ent">div</span>&gt;
+            &lt;<span class="pl-ent">p</span>&gt;Other theme&lt;/<span class="pl-ent">p</span>&gt;
+            &lt;<span class="pl-ent">ul</span>&gt;
+                &lt;<span class="pl-ent">li</span>&gt;<span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>css(<span class="pl-s"><span class="pl-pds">'</span>side<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">li</span>&gt;
+                &lt;<span class="pl-ent">li</span>&gt;<span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>js(<span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">li</span>&gt;
+                &lt;<span class="pl-ent">li</span>&gt;<span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">'</span>book<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>png<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">li</span>&gt;
+                &lt;<span class="pl-ent">li</span>&gt;<span class="pl-pse">&lt;?=</span><span class="pl-s1"><span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>enqueue(<span class="pl-s"><span class="pl-pds">'</span>img/book.png<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">li</span>&gt;
+            &lt;/<span class="pl-ent">ul</span>&gt;
+            <span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">            <span class="pl-k">foreach</span> (<span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>enqueue(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>img/book.png<span class="pl-pds">'</span></span>), <span class="pl-s"><span class="pl-pds">'</span>dark<span class="pl-pds">'</span></span>) <span class="pl-k">as</span> <span class="pl-smi">$book</span>):</span>
+<span class="pl-s1">                <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$book</span>&lt;br/&gt;<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">            <span class="pl-k">endforeach</span>;</span>
+<span class="pl-s1">            </span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+
+        &lt;/<span class="pl-ent">div</span>&gt;
+        &lt;<span class="pl-ent">div</span>&gt;
+            <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-c1">echo</span> <span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>img(<span class="pl-s"><span class="pl-pds">'</span>books1<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+            &lt;<span class="pl-ent">br</span>/&gt;
+            <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-c1">echo</span> <span class="pl-smi">$theme</span><span class="pl-k">-&gt;</span>assets(<span class="pl-s"><span class="pl-pds">'</span>style.css<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>bootstrap<span class="pl-pds">'</span></span>)</span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        &lt;/<span class="pl-ent">div</span>&gt;
+
+    &lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;
+</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/roggeo/glance">Glance</a> is maintained by <a href="https://github.com/roggeo">roggeo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
